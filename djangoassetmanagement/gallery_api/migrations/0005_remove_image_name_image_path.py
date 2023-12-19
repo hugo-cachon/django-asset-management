@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('image_api', '0004_alter_image_gallery'),
+        ('gallery_api', '0004_alter_image_gallery'),
     ]
 
     operations = [

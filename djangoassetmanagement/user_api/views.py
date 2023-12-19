@@ -1,22 +1,15 @@
-from django.contrib.auth.models import Group, User
-from rest_framework import permissions, viewsets
+from django.contrib.auth.models import User
+from rest_framework import generics, viewsets
+from rest_framework.decorators import permission_classes
+from rest_framework.permissions import IsAuthenticated
+from djangoassetmanagement.user_api.serializers import UserSerializer
 
-from djangoassetmanagement.user_api.serializers import GroupSerializer, UserSerializer
 
-
-class UserViewSet(viewsets.ModelViewSet):
+@permission_classes([IsAuthenticated])
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
+    This viewset automatically provides `list` and `retrieve` actions.
     """
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-class GroupViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows groups to be viewed or edited.
-    """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]

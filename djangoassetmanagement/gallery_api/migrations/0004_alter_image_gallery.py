@@ -7,13 +7,13 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('image_api', '0003_image_gallery'),
+        ('gallery_api', '0003_image_gallery'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='image',
             name='gallery',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='images', to='image_api.gallery'),
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='images', to='gallery_api.gallery'),
         ),
     ]

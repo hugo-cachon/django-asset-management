@@ -1,14 +1,13 @@
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    galleries = serializers.HyperlinkedRelatedField(many=True,
+                                                    view_name='gallery-detail',
+                                                    read_only=True)
+
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', 'groups']
+        fields = ['url', 'id', 'username', 'galleries']
 
-
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Group
-        fields = ['url', 'name']

@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'djangoassetmanagement.user_api',
-    'djangoassetmanagement.image_api'
+    'djangoassetmanagement.gallery_api'
 ]
 
 REST_FRAMEWORK = {
